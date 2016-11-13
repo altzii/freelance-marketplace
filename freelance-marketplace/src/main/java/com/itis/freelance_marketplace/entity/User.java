@@ -89,7 +89,7 @@ public class User {
         this.aboutMe = aboutMe;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(
             name = "roles_users",
             joinColumns = @JoinColumn(name = "user_id"),
