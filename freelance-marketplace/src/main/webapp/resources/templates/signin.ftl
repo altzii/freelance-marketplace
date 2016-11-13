@@ -29,8 +29,8 @@
     </label>
 
     <#if error??>
-    <p align="center" style="color: #a71f1f">
-        Неправильный логин или пароль
+    <p style="color: #a71f1f">
+     ${SPRING_SECURITY_LAST_EXCEPTION.message}
     </p>
     </#if>
 

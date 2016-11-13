@@ -12,37 +12,45 @@
 <body>
 <h1>Регистрация</h1>
 
+<@form.form commandName="signup_form" action="/signup" acceptCharset="UTF-8"  method="post">
+<div>
+    <@form.input id="login" name="login" path="login" placeholder="введите логин" />
+    <p><@form.errors path="login" cssStyle="color: #ab2020;" /></p>
+</div>
+<div>
+    <@form.input  id="name" name="name" path="name"  class="form-control" placeholder="введите ФИО"/>
+    <p><@form.errors path="name" cssStyle="color: #ab2020;" /></p>
+</div>
+<div>
+    <@form.input  id="email" type="email" name="email" path="email" class="form-control" placeholder="введите e-mail"/>
+    <p><@form.errors path="email" cssStyle="color: #ab2020;" /></p>
+</div>
+<div>
+    <@form.input  id="phone" name="phone" path="phone" class="form-control" placeholder="введите номер телефона"/>
+    <p><@form.errors path="phone" cssStyle="color: #ab2020;" /></p>
+</div>
+<div>
+    <@form.input type="password" name="password" path="password" class="form-control" placeholder="введите пароль"/>
+    <p><@form.errors path="password" cssStyle="color: #ab2020;" /></p>
+</div>
+<div>
+    <@form.input type="password" name="confirmPassword" path="confirmPassword" class="form-control" placeholder="повторите ввод пароля"/>
+</div>
+<div>
+    <p><@form.errors path="confirmPassword" cssStyle="color: #ab2020;"/></p>
+</div>
 
-<form action="/signup" acceptCharset="UTF-8"  method="post">
-    <p>
-        <label for="login">Логин</label><br />
-        <input id="login" name="login" type="text" required />
-    </p>
-
-    <p>
-        <label for="name">ФИО</label><br />
-        <input id="name" name="name" type="text" required />
-    </p>
-
-    <p>
-        <label for="email">email</label><br />
-        <input id="email" name="email" type="email" required />
-    </p>
-
-    <p>
-        <label for="password">Пароль</label><br />
-        <input id="password" name="password" type="password" required />
-    </p>
-
-    <p>
-        <select required name="role">
-            <option value="ROLE_DESIGNER">Дизайнер</option>
-            <option value="ROLE_CUSTOMER">Заказчик</option>
-        </select>
-    </p>
-    <button type="submit">Регистрация</button>
-</form>
-
+<div>
+    <p><@form.select path="role" id="role"></p>
+    <option value="ROLE_DESIGNER">Дизайнер</option>
+    <option value="ROLE_CUSTOMER">Заказчик</option>
+  </@form.select>
+</div>
+<button type="submit">Регистрация</button>
+</@form.form>
+<div>
+<a href="/signin" class="text-center">У меня уже есть аккаунт</a>
+</div>
 
 </body>
 </html>

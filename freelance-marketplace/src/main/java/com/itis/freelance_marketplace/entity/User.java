@@ -15,6 +15,7 @@ public class User {
     private String password;
     private String email;
     private String name;
+    private String phone;
     private String aboutMe;
     private List<Role> roles;
 
@@ -77,6 +78,16 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Basic
+    @Column(name = "phone")
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @Basic
