@@ -5,6 +5,7 @@ import com.itis.freelance_marketplace.entity.User;
 import com.itis.freelance_marketplace.service.RoleService;
 import com.itis.freelance_marketplace.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,9 +38,11 @@ public class SignupController {
                           @RequestParam(value="email", required=true) String email,
                           @RequestParam(value="role", required=true) String roleParam) {
 
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
         User user = new User();
         user.setLogin(login);
-        user.setPassword(password);
+        user.setPassword(passwordEncoder.encode(password));
         user.setEmail(email);
 
         ArrayList<Role> roles = new ArrayList<Role>();

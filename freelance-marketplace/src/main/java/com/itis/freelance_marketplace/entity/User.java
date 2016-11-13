@@ -133,5 +133,4 @@ public class User {
         result = 31 * result + (aboutMe != null ? aboutMe.hashCode() : 0);
         return result;
     }
-
 }

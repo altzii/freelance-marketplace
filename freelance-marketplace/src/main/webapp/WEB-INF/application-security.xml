@@ -18,7 +18,7 @@
 
     <authentication-manager>
         <authentication-provider user-service-ref="customUserDetailsService">
-
+            <password-encoder ref="bcryptEncoder"/>
         </authentication-provider>
     </authentication-manager>
 
