@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public User update(User user) {
         return userRepository.saveAndFlush(user);
     }
