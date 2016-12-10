@@ -5,6 +5,7 @@ import com.itis.freelance_marketplace.repository.RoleRepository;
 import com.itis.freelance_marketplace.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,11 +18,13 @@ public class RoleServiceImpl implements RoleService {
     RoleRepository roleRepository;
 
     @Override
+    @Transactional
     public Role create(Role role) {
         return roleRepository.save(role);
     }
 
     @Override
+    @Transactional
     public Role delete(long id) {
         Role role = roleRepository.findOne(id);
         roleRepository.delete(role);
@@ -34,6 +37,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
+    @Transactional
     public Role update(Role role) {
         return roleRepository.saveAndFlush(role);
     }
