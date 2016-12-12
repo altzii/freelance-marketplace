@@ -25,7 +25,7 @@ public class DesignerController {
     UserRepository userRepository;
 
     @RequestMapping(value = "/designers", method = RequestMethod.GET)
-    public String getConversation(ModelMap modelMap){
+    public String getDesigners(ModelMap modelMap){
         Role role = roleService.findByName("ROLE_DESIGNER");
 
         modelMap.put("designers", userRepository.findAllByRole(role));

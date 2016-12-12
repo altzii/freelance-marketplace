@@ -17,7 +17,6 @@ public class PortfolioImageServiceImpl implements PortfolioImageService {
     @Autowired
     PortfolioImageRepository portfolioImageRepository;
 
-
     @Override
     @Transactional
     public PortfolioImage create(PortfolioImage portfolioImage) {
