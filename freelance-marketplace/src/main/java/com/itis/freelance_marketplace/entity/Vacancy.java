@@ -1,6 +1,10 @@
 package com.itis.freelance_marketplace.entity;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by alt on 12.12.16.
@@ -13,6 +17,7 @@ public class Vacancy {
     private String organization;
     private String description;
     private User user;
+    private List<VacancyComment> vacancyComments;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -63,6 +68,17 @@ public class Vacancy {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @OneToMany(cascade = CascadeType.MERGE)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinColumn(name="vacancy_id")
+    public List<VacancyComment> getVacancyComments() {
+        return vacancyComments;
+    }
+
+    public void setVacancyComments(List<VacancyComment> vacancyComments) {
+        this.vacancyComments = vacancyComments;
     }
 
     @Override

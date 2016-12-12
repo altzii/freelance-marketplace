@@ -12,8 +12,9 @@
 <body>
 <h1>Сообщения</h1>
 
-<table border="1">
+
 <#if messages??>
+    <table border="1">
     <#list messages as message>
     <tr>
         <td>${message.date}</td>
@@ -21,8 +22,9 @@
         <td>${message.text}</td>
     </tr>
     </#list>
+    </table>
 </#if>
-</table>
+
 <form action="/send_message/${to_id}" method="post" accept-charset="UTF-8">
     <input name="text" type="text"  placeholder="Введите сообщение">
     <button type="submit">Отправить</button>
