@@ -19,6 +19,29 @@
             <td>${vacancy.description}</td>
         </tr>
     </table>
+
+
+    <h1>Комментарии</h1>
+
+    <@form.form commandName="add_vacancy_comment_form" action="/vacancies/add_comment/${vacancy.id}" acceptCharset="UTF-8"  method="post">
+    <div>
+        <@form.textarea path="text" id="text" name="text" rows="5" cols="30" placeholder="Введите текст комментария"  />
+        <p><@form.errors path="text" cssStyle="color: #ab2020;" /></p>
+    </div>
+    <button type="submit">Добавить комментарий</button>
+    </@form.form>
+
+    <#if vacancy.vacancyComments??>
+    <table border="1">
+        <#list vacancy.vacancyComments as vacancyComment>
+            <tr>
+                <td>${vacancyComment.date}</td>
+                <td>${vacancyComment.user.name}</td>
+                <td>${vacancyComment.text}</td>
+            </tr>
+        </#list>
+    </table>
+    </#if>
 <#else>
 <h3>Такой вакансии не существует</h3>
 </#if>
