@@ -6,22 +6,22 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Портфолио</title>
+    <title>Дизайнеры</title>
 </head>
 
 <body>
-<h1>Портфолио</h1>
+<h1>Дизайнеры</h1>
 
-<table border="1">
-<#if portfolios??>
-    <#list portfolios as portfolio>
+<table>
+<#if designers??>
+    <#list designers as designer>
         <tr>
-            <td>${portfolio.id}</td>
-            <td>${portfolio.user.login}</td>
-            <td>${portfolio.description}</td>
+            <td>${designer.login}</td>
+            <td>${designer.name}</td>
+            <td>${designer.email}</td>
+            <td>${designer.phone}</td>
         </tr>
     </#list>
 </#if>
 </table>
 </body>
-</html>
