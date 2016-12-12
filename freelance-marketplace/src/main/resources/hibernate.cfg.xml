@@ -12,6 +12,7 @@
         <mapping class="com.itis.freelance_marketplace.entity.Message"/>
         <mapping class="com.itis.freelance_marketplace.entity.Portfolio"/>
         <mapping class="com.itis.freelance_marketplace.entity.PortfolioImage"/>
+        <mapping class="com.itis.freelance_marketplace.entity.Vacancy"/>
         <!-- DB schema will be updated if needed -->
     </session-factory>
 </hibernate-configuration>
