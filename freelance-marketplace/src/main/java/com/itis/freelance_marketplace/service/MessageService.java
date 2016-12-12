@@ -9,7 +9,7 @@ import java.util.List;
  * Created by alt on 14.11.16.
  */
 public interface MessageService {
-    Message create(Message role);
+    Message create(Message message);
 
     Message delete(long id);
 
@@ -17,7 +17,7 @@ public interface MessageService {
 
     List<Message> findAllMessagesByUsers(User userFrom, User userTo);
 
-    Message update(Message role);
+    Message update(Message message);
 
     Message findById(long id);
 }

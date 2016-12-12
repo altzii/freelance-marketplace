@@ -2,8 +2,7 @@ package com.itis.freelance_marketplace.controller;
 
 import com.itis.freelance_marketplace.entity.Message;
 import com.itis.freelance_marketplace.entity.User;
-import com.itis.freelance_marketplace.repository.MessageRepository;
-import com.itis.freelance_marketplace.repository.UserRepository;
+import com.itis.freelance_marketplace.service.MessageService;
 import com.itis.freelance_marketplace.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -23,10 +22,7 @@ import java.sql.Timestamp;
 @Controller
 public class MessageController {
     @Autowired
-    MessageRepository messageRepository;
-
-    @Autowired
-    UserRepository userRepository;
+    MessageService messageService;
 
     @Autowired
     UserService userService;
@@ -36,9 +32,9 @@ public class MessageController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String login = authentication.getName();
         User currentUser = userService.findByLogin(login);
-        User user = userRepository.findOne(id);
+        User user = userService.findById(id);
 
-        modelMap.put("messages", messageRepository.findAllMessagesByUsers(currentUser, user));
+        modelMap.put("messages", messageService.findAllMessagesByUsers(currentUser, user));
         modelMap.put("to_id", user.getId());
         return "messages";
     }
@@ -48,7 +44,7 @@ public class MessageController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String login = authentication.getName();
         User fromUser = userService.findByLogin(login);
-        User toUser = userRepository.findOne(id);
+        User toUser = userService.findById(id);
 
         Message message = new Message();
         message.setText(text);
@@ -56,7 +52,7 @@ public class MessageController {
         message.setFromUser(fromUser);
         message.setToUser(toUser);
 
-        messageRepository.save(message);
+        messageService.create(message);
 
         return "redirect:/conversation?id=" + id;
     }
