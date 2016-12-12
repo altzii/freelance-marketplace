@@ -18,6 +18,7 @@ public class User {
     private String phone;
     private String aboutMe;
     private List<Role> roles;
+    private Portfolio portfolio;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -112,6 +113,15 @@ public class User {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    @OneToOne(mappedBy = "user")
+    public Portfolio getPortfolio() {
+        return portfolio;
+    }
+
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
     }
 
 
