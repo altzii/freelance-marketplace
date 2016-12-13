@@ -1,0 +1,1275 @@
+html, body {
+    font-family: 'Open Sans', sans-serif;
+    width: 100%;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+}
+
+* {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    color: #000;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    text-decoration: none;
+}
+
+.inside {
+    width: 1120px;
+    display: inline-block;
+    text-align: left;
+    font-size: 0;
+}
+
+.col-2 {
+    width: 50%;
+    display: inline-block;
+}
+
+.col-3 {
+    display: inline-block;
+    vertical-align: middle;
+    width: 33%;
+}
+
+.col-3:first-child {
+    text-align: left;
+}
+
+.col-3:nth-child(2) {
+    text-align: center;
+}
+
+.col-3:last-child {
+    text-align: right;
+}
+
+header {
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 3;
+    padding: 20px 0;
+    overflow: hidden;
+}
+
+header.page {
+    background: #e74c3c;
+}
+
+header.black {
+    background: #34495e;
+}
+
+header .menu {
+    opacity: 0;
+    transform: translateY(-100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    line-height: 74px;
+
+    transition: 0.2s ease-out;
+}
+
+header .menu.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+header .menu ul li {
+    margin: 0 30px;
+    font-size: 15px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+header .menu ul li img {
+    cursor: pointer;
+}
+
+header .logo a {
+    color: #fff;
+    font-weight: 800;
+    font-size: 28px;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 5px;
+}
+
+header .hamburger {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+header .hamburger img {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+header .hamburger .text {
+    display: inline-block;
+    vertical-align: middle;
+    color: #fff;
+    font-weight: 600;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+header .search {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 40px;
+}
+
+header .search img {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+header .search .text {
+    display: inline-block;
+    vertical-align: middle;
+    color: #fff;
+    font-weight: 600;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+header .signin, header .signup {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+header .signup {
+    margin-left: 30px;
+}
+
+header .signin .button {
+    color: #fff;
+    font-weight: 600;
+}
+
+header .signup .button {
+    color: #fff;
+    font-weight: 600;
+    border: 1px solid #fff;
+    border-radius: 6px;
+    padding: 5px 10px;
+}
+
+header .signup .button:hover {
+    color: #34495e;
+    background: #fff;
+}
+
+.welcome {
+    position: relative;
+}
+
+.welcome .background {
+    background: url(../images/background.jpg);
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.welcome .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    font-size: 0;
+}
+
+.welcome .content .inside {
+    width: 560px;
+    height: 100%;
+    position: relative;
+}
+
+.welcome .content .inside .block {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin-top: -130px;
+    padding: 0 70px;
+}
+
+.welcome .content .col-2 {
+    vertical-align: top;
+}
+
+.welcome .content .col-2:first-child {
+    background: rgba(208, 69, 54, 0.87);
+    height: 100%;
+    text-align: right;
+}
+
+.welcome .content .col-2:first-child .inside {
+    text-align: right;
+}
+
+.welcome .content .col-2:last-child {
+    background: rgba(40, 56, 72, 0.87);
+    height: 100%;
+    text-align: left;
+}
+
+.welcome .content .col-2:last-child .inside {
+    text-align: left;
+}
+
+.welcome .content .text {
+    display: inline-block;
+    font-size: 42px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.welcome .content .button {
+    background: #34495e;
+    width: 200px;
+    height: 50px;
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+    text-align: center;
+    line-height: 50px;
+    margin-top: 40px;
+    display: inline-block;
+}
+
+.welcome .content .col-2:last-child .button {
+    background: #e74c3c;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #fff;
+    padding: 30px 0;
+    z-index: 2;
+    text-align: center;
+}
+
+footer .inside {
+    text-align: center;
+}
+
+footer .title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #34495e;
+    margin-bottom: 20px;
+}
+
+footer ul li {
+    list-style-type: none;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+footer .col-3 {
+    text-align: left !important;
+    vertical-align: top;
+}
+
+footer .button {
+    display: inline-block;
+    padding: 13px 22px;
+    height: 100%;
+    transition: 0.2s linear;
+}
+
+footer .button:hover {
+    background: #eee;
+}
+
+footer .button:hover img {
+    transform: translateX(14px);
+}
+
+footer .text {
+    color: #34495e;
+    font-size: 20px;
+    font-weight: 600;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+footer img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 28px;
+    margin-left: 20px;
+    transition: 0.2s linear;
+}
+
+/* SIGNIN PAGE */
+
+.signincontainer {
+    position: relative;
+}
+
+.signincontainer .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    font-size: 0;
+}
+
+.signincontainer .content .inside {
+    width: 560px;
+    height: 100%;
+    position: relative;
+}
+
+.signincontainer .content .inside .block {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin-top: -130px;
+    padding: 0 70px;
+}
+
+.signincontainer .content .col-2 {
+    vertical-align: top;
+}
+
+.signincontainer .content .col-2:first-child {
+    background: rgba(40, 56, 72, 1);
+    height: 100%;
+    text-align: right;
+}
+
+.signincontainer .content .col-2:first-child .inside {
+    text-align: right;
+}
+
+.signincontainer .content .col-2:last-child {
+    background: #fff;
+    height: 100%;
+    text-align: left;
+}
+
+.signincontainer .content .col-2:last-child .inside {
+    text-align: left;
+}
+
+.signincontainer .content .text {
+    display: inline-block;
+    font-size: 42px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.signincontainer .content .button {
+    background: #34495e;
+    width: 200px;
+    height: 50px;
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+    text-align: center;
+    line-height: 50px;
+    margin-top: 40px;
+    display: inline-block;
+}
+
+.signincontainer .content .col-2:last-child .button {
+    background: #e74c3c;
+}
+
+.signincontainer .content .col-2 .title {
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: rgba(40, 56, 72, 1);
+    font-weight: 800;
+}
+
+.signincontainer .content .col-2 form .sub {
+    color: rgba(40, 56, 72, 1);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.signincontainer .content .col-2 form input {
+    outline: none;
+    border-radius: 0;
+    border: 1px solid #ddd;
+    width: 300px;
+    height: 40px;
+    margin-bottom: 30px;
+    display: block;
+    font-size: 14px;
+    padding: 0 12px;
+
+    transition: 0.2s linear;
+}
+
+.signincontainer .content .col-2 form input.wrong {
+    border-color: #C00000;
+}
+
+.signincontainer .content .col-2 form .button {
+    margin: 0;
+    cursor: pointer;
+}
+
+.signincontainer .content .col-2:last-child .block {
+    margin-top: -180px;
+}
+
+.error {
+    font-size: 18px;
+    color: #C00000;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+/* SIGNUP PAGE */
+
+.signupcontainer {
+    position: relative;
+}
+
+.signupcontainer .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    font-size: 0;
+}
+
+.signupcontainer .content .inside {
+    width: 560px;
+    height: 100%;
+    position: relative;
+}
+
+.signupcontainer .content .inside .block {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin-top: -130px;
+    padding: 0 70px;
+}
+
+.signupcontainer .content .col-2 {
+    vertical-align: top;
+}
+
+.signupcontainer .content .col-2:first-child {
+    background: rgba(40, 56, 72, 1);
+    height: 100%;
+    text-align: right;
+}
+
+.signupcontainer .content .col-2:first-child .inside {
+    text-align: right;
+}
+
+.signupcontainer .content .col-2:last-child {
+    background: #fff;
+    height: 100%;
+    text-align: left;
+}
+
+.signupcontainer .content .col-2:last-child .inside {
+    text-align: left;
+}
+
+.signupcontainer .content .text {
+    display: inline-block;
+    font-size: 42px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.signupcontainer .content .button {
+    background: #34495e;
+    width: 200px;
+    height: 50px;
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+    text-align: center;
+    line-height: 50px;
+    margin-top: 40px;
+    display: inline-block;
+}
+
+.signupcontainer .content .col-2:last-child .button {
+    background: #e74c3c;
+}
+
+.signupcontainer .content .col-2 .title {
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: rgba(40, 56, 72, 1);
+    font-weight: 800;
+}
+
+.signupcontainer .content .col-2 form .sub {
+    color: rgba(40, 56, 72, 1);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.signupcontainer .content .col-2 form input {
+    outline: none;
+    border-radius: 0;
+    border: 1px solid #ddd;
+    width: 300px;
+    height: 40px;
+    margin-top: 20px;
+    display: block;
+    font-size: 14px;
+    padding: 0 12px;
+
+    transition: 0.2s linear;
+}
+
+.signupcontainer .content .col-2 form input.wrong {
+    border-color: #C00000;
+}
+
+.signupcontainer .content .col-2 form .button {
+    margin: 0;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.signupcontainer .content .col-2 form select {
+    margin-top: 20px;
+}
+
+.signupcontainer .content .col-2:last-child .block {
+    margin-top: -305px;
+}
+
+.signupcontainer .content .col-2:last-child form p span {
+    font-size: 13px;
+}
+
+/* DESIGNERS PAGE */
+
+.designers {
+    text-align: center;
+}
+
+.designers .top {
+    background: #34495e;
+    padding: 30px 0;
+    padding-top: 80px;
+}
+
+.designers .top .title {
+    font-size: 28px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.designers .content {
+    padding: 50px 0;
+    background: #f2f5f7;
+}
+
+.designers .content .blocks .block {
+    display: inline-block;
+    width: 475px;
+    padding: 30px;
+    margin-bottom: 40px;
+    background: #fff;
+}
+
+.designers .content .blocks .block:nth-child(odd) {
+    margin-right: 40px;
+}
+
+.designers .content .blocks .block .name {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    width: 206px;
+}
+
+.designers .content .blocks .block .img {
+    background: #34495e;
+    width: 70px;
+    height: 70px;
+    border-radius: 90px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.designers .content .blocks .block .button {
+    display: inline-block;
+    vertical-align: middle;
+    width: 110px;
+    margin-left: 50px;
+    padding: 10px 0;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    background:#e74c3c;
+}
+
+.designers .content .blocks .block .second-row {
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.designers .content .blocks .block .email {
+    padding: 10px;
+    border: 1px solid #eee;
+    display: inline-block;
+    color: #444;
+    vertical-align: middle;
+}
+
+.designers .content .blocks .block .phone {
+    padding: 10px;
+    border: 1px solid #eee;
+    display: inline-block;
+    color: #444;
+    vertical-align: middle;
+    margin-left: 20px;
+}
+
+/* CUSTOMERS PAGE */
+
+.customers {
+    text-align: center;
+}
+
+.customers .top {
+    background: #34495e;
+    padding: 30px 0;
+    padding-top: 80px;
+}
+
+.customers .top .title {
+    font-size: 28px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.customers .content {
+    padding: 50px 0;
+    background: #f2f5f7;
+}
+
+.customers .content .blocks .block {
+    display: inline-block;
+    width: 475px;
+    padding: 30px;
+    margin-bottom: 40px;
+    background: #fff;
+}
+
+.customers .content .blocks .block:nth-child(odd) {
+    margin-right: 40px;
+}
+
+.customers .content .blocks .block .name {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    width: 206px;
+}
+
+.customers .content .blocks .block .img {
+    background: #34495e;
+    width: 70px;
+    height: 70px;
+    border-radius: 90px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.customers .content .blocks .block .button {
+    display: inline-block;
+    vertical-align: middle;
+    width: 110px;
+    margin-left: 50px;
+    padding: 10px 0;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    background:#e74c3c;
+}
+
+.customers .content .blocks .block .second-row {
+    margin-top: 30px;
+}
+
+.customers .content .blocks .block .email {
+    padding: 10px;
+    border: 1px solid #eee;
+    display: inline-block;
+    color: #444;
+    vertical-align: middle;
+}
+
+.customers .content .blocks .block .phone {
+    padding: 10px;
+    border: 1px solid #eee;
+    display: inline-block;
+    color: #444;
+    vertical-align: middle;
+    margin-left: 20px;
+}
+
+/* VACANCIES PAGE */
+
+.vacancies {
+    text-align: center;
+}
+
+.vacancies .top {
+    background: #34495e;
+    padding: 30px 0;
+    padding-top: 80px;
+}
+
+.vacancies .top .title {
+    font-size: 28px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.vacancies .head {
+    padding: 20px 30px;
+}
+
+.vacancies .head .title {
+    display: inline-block;
+    vertical-align: middle;
+    width: 69%;
+    padding-left: 55px;
+    box-sizing: border-box;
+    color: #777;
+}
+
+.vacancies .head .name {
+    display: inline-block;
+    vertical-align: middle;
+    width: 14%;
+    color: #777;
+}
+
+.vacancies .head .button {
+    display: inline-block;
+    vertical-align: middle;
+    width: 10%;
+    color: #777;
+}
+
+.vacancies .content {
+    padding: 50px 0;
+    background: #f2f5f7;
+}
+
+.vacancies .content .create {
+    text-align: right;
+    margin-bottom: 40px;
+}
+
+.vacancies .content .create .button {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 50px;
+    padding: 10px 20px;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    background: forestgreen;
+}
+
+.vacancies .content .blocks .block {
+    display: inline-block;
+    width: 100%;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.vacancies .content .blocks .block .name {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    width: 10%;
+}
+
+.vacancies .content .blocks .block .img {
+    background: #34495e;
+    width: 20px;
+    height: 20px;
+    border-radius: 90px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.vacancies .content .blocks .block .button {
+    display: inline-block;
+    vertical-align: middle;
+    width: 15%;
+    margin-left: 50px;
+    padding: 10px 0;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    background: #e74c3c;
+}
+
+.vacancies .content .blocks .block .title {
+    padding: 10px;
+    padding-left: 30px;
+    font-size: 16px;
+    display: inline-block;
+    color: #444;
+    width: 60%;
+    vertical-align: middle;
+}
+
+.vacancies .content .blocks .block .desc {
+    padding: 10px;
+    display: inline-block;
+    color: #444;
+    vertical-align: middle;
+    margin-left: 20px;
+}
+
+/* VACANCY */
+
+.vacancy {
+    text-align: center;
+}
+
+.vacancy .top {
+    background: #34495e;
+    padding: 30px 0;
+    padding-top: 80px;
+}
+
+.vacancy .top .title {
+    font-size: 28px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.vacancy .back {
+    margin-bottom: 30px;
+    padding: 15px 20px;
+    background: #fff;
+    display: inline-block;
+}
+
+.vacancy .back img {
+    transform: rotate(180deg);
+    width: 13px;
+}
+
+.vacancy .back span {
+    font-size: 16px;
+    color: #34495e;
+    margin-left: 15px;
+}
+
+.vacancy .content {
+    padding: 50px 0;
+    background: #f2f5f7;
+}
+
+.vacancy .content .blocks {
+    display: inline-block;
+    width: 100%;
+    padding: 50px;
+    margin-bottom: 20px;
+    background: #fff;
+}
+
+.vacancy .content .blocks .block .name {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    width: 10%;
+    max-width: 206px;
+}
+
+.vacancy .content .blocks .block .img {
+    background: #34495e;
+    width: 20px;
+    height: 20px;
+    border-radius: 90px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.vacancy .content .blocks .block .button {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 50px;
+    padding: 10px 20px;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    float: right;
+    background: #e74c3c;
+}
+
+.vacancy .content .blocks .block .title {
+    padding: 10px 0;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    display: inline-block;
+    color: #444;
+    vertical-align: middle;
+}
+
+.vacancy .content .blocks .block .desc {
+    padding: 10px 0;
+    display: inline-block;
+    color: #444;
+    vertical-align: middle;
+}
+
+.vacancy .content .comments {
+    margin-top: 50px;
+}
+
+.vacancy .content .comments h1 {
+    color: #444;
+    font-size: 16px;
+}
+
+.vacancy .content .comments textarea {
+    resize: none;
+    outline: none;
+    border-radius: 0;
+    border: 1px solid #ddd;
+    width: 400px;
+    height: 80px;
+    margin-top: 20px;
+    display: block;
+    font-size: 14px;
+    padding: 15px;
+
+    transition: 0.2s linear;
+}
+
+.vacancy .content .comments .button {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    background: #e74c3c;
+}
+
+.vacancy .content .comments .comment_items {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #ddd;
+}
+
+.vacancy .content .comments .comment_items .comment {
+    margin-bottom: 40px;
+}
+
+.vacancy .content .comments .comment_items .comment .img {
+    background: #34495e;
+    width: 20px;
+    height: 20px;
+    border-radius: 90px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.vacancy .content .comments .comment_items .comment .name {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 15px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.vacancy .content .comments .comment_items .comment .date {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 15px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.vacancy .content .comments .comment_items .comment .text {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 38px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 10px;
+    color: #444;
+}
+
+/* MESSAGES PAGE */
+
+.messages {
+    text-align: center;
+}
+
+.messages .top {
+    background: #34495e;
+    padding: 30px 0;
+    padding-top: 80px;
+}
+
+.messages .top .title {
+    font-size: 28px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.messages .content {
+    padding: 50px 0;
+    background: #f2f5f7;
+}
+
+.messages .content .blocks .block {
+    display: inline-block;
+    width: 60%;
+    float: left;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.messages .content .blocks .block.my {
+    float: right;
+    background: rgba(104, 147, 189, 0.31);
+}
+
+.messages .content form {
+    display: block;
+    float: right;
+    clear: both;
+    padding-top: 40px;
+}
+
+.messages .content form input {
+    resize: none;
+    outline: none;
+    border-radius: 0;
+    border: 1px solid #ddd;
+    display: inline-block;
+    vertical-align: middle;
+    width: 400px;
+    height: 40px;
+    font-size: 14px;
+    padding: 0 15px;
+
+    transition: 0.2s linear;
+}
+
+.messages .content form .button {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 20px;
+    padding: 10px 20px;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    background: #e74c3c;
+}
+
+.messages .content .block .date {
+    font-size: 12px;
+}
+
+.messages .content .block .name {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.messages .content .block .text {
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 10px;
+    color: #333;
+}
+
+/* ADDVACANCY */
+
+.addvacancy {
+    text-align: center;
+}
+
+.addvacancy .top {
+    background: #34495e;
+    padding: 30px 0;
+    padding-top: 80px;
+}
+
+.addvacancy .top .title {
+    font-size: 28px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.addvacancy .back {
+    margin-bottom: 30px;
+    padding: 15px 20px;
+    background: #fff;
+    display: inline-block;
+}
+
+.addvacancy .back img {
+    transform: rotate(180deg);
+    width: 13px;
+}
+
+.addvacancy .back span {
+    font-size: 16px;
+    color: #34495e;
+    margin-left: 15px;
+}
+
+.addvacancy .content {
+    padding: 50px 0;
+    background: #f2f5f7;
+}
+
+.addvacancy .content .blocks {
+    display: inline-block;
+    width: 100%;
+    padding: 50px;
+    margin-bottom: 20px;
+    background: #fff;
+}
+
+.addvacancy .content .blocks .block .name {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    width: 10%;
+    max-width: 206px;
+}
+
+.addvacancy .content .blocks .block .img {
+    background: #34495e;
+    width: 20px;
+    height: 20px;
+    border-radius: 90px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.addvacancy .content .blocks .block .button {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 50px;
+    padding: 10px 20px;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    float: right;
+    background: #e74c3c;
+}
+
+.addvacancy .content .blocks .block .title {
+    padding: 10px 0;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    display: inline-block;
+    color: #444;
+    vertical-align: middle;
+}
+
+.addvacancy .content .blocks .block .desc {
+    padding: 10px 0;
+    display: inline-block;
+    color: #444;
+    vertical-align: middle;
+}
+
+
+.addvacancy .content input {
+    resize: none;
+    outline: none;
+    border-radius: 0;
+    border: 1px solid #ddd;
+    width: 300px;
+    height: 40px;
+    display: block;
+    font-size: 14px;
+    padding: 0 15px;
+    margin-bottom: 14px;
+
+    transition: 0.2s linear;
+}
+
+.addvacancy .content .button {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    background: #e74c3c;
+}
+

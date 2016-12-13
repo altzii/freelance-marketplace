@@ -13,9 +13,11 @@
     <tx:annotation-driven/>
 
     <http auto-config="true" use-expressions="true">
-        <intercept-url pattern="/" access="hasRole('ROLE_USER')"/>
-        <intercept-url pattern="/designers" access="hasRole('ROLE_USER')"/>
-        <intercept-url pattern="/consumer/**" access="hasRole('ROLE_DESIGNER')"/>
+        <intercept-url pattern="/conversation/**" access="hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/customers/**" access="hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/vacancies/**" access="hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/designers/**" access="hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/customer/**" access="hasRole('ROLE_CUSTOMER')"/>
         <form-login login-page="/signin"
                     authentication-failure-url="/signin?error=true" default-target-url="/"/>
         <logout logout-success-url="/signin" delete-cookies="JSESSIONID"/>

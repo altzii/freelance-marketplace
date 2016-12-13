@@ -52,7 +52,7 @@ public class VacancyController {
     }
 
 
-    @RequestMapping(value = "/consumer/vacancies/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/customer/vacancies/add", method = RequestMethod.POST)
     public String addVacancy(ModelMap modelMap, @ModelAttribute("add_vacancy_form") @Valid AddVacancyForm form, BindingResult result) {
         if (result.hasErrors()) {
             modelMap.put("vacancies", vacancyService.findAll());

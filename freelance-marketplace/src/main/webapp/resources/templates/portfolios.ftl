@@ -2,26 +2,120 @@
 <#assign c=JspTaglibs["http://java.sun.com/jsp/jstl/core"] />
 <#assign form=JspTaglibs["http://www.springframework.org/tags/form"]>
 
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Портфолио</title>
+    <title>Freelance Marketplace</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" href="/resources/css/style.css">
 </head>
-
 <body>
-<h1>Портфолио</h1>
-
-<table border="1">
-<#if portfolios??>
-    <#list portfolios as portfolio>
-        <tr>
-            <td>${portfolio.id}</td>
-            <td>${portfolio.user.login}</td>
-            <td>${portfolio.description}</td>
-        </tr>
-    </#list>
-</#if>
-</table>
+<div style="height:78px;" class="header_container"></div>
+<header class="black">
+    <div class="menu">
+        <div class="inside">
+            <ul>
+                <li style="margin-right: 40px;"><img src="/resources/images/close.png"></li>
+                <a href="/designers"><li>Дизайнеры</li></a>
+                <a href="/customers"><li>Заказчики</li></a>
+                <a href="/vacancies"><li>Вакансии</li></a>
+            </ul>
+        </div>
+    </div>
+    <div class="inside">
+        <div class="col-3">
+            <div class="hamburger">
+                <img src="/resources/images/hamburger.png">
+                <div class="text">Меню</div>
+            </div>
+            <div class="search">
+                <img src="/resources/images/search.png">
+                <div class="text">Поиск</div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="logo">
+                <a href="/">FreelanceDesign</a>
+            </div>
+        </div>
+        <div class="col-3">
+        <@security.authorize access="isAnonymous()">
+            <div class="signin">
+                <a href="/signin"><div class="button">Вход</div></a>
+            </div>
+            <div class="signup">
+                <a href="/signup"><div class="button">Регистрация</div></a>
+            </div>
+        </@security.authorize>
+        <@security.authorize access="isAuthenticated()">
+            <div class="signin">
+                <a href="/"><div class="button">${user.login}</div></a>
+            </div>
+            <div style="margin-left: 30px;" class="signin">
+                <a href="/j_spring_security_logout"><div class="button">Выйти</div></a>
+            </div>
+        </@security.authorize>
+        </div>
+    </div>
+</header>
+<div class="customers">
+    <div class="top">
+        <div class="inside">
+            <div class="title">Дизайнеры</div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="inside">
+            <div class="blocks">
+            <#if portfolios??>
+                <#list portfolios as portfolio>
+                    <div class="block">
+                        <div class="first-row">
+                            <div class="img"></div>
+                            <div class="name">${portfolio.user.login}</div>
+                            <div class="button">Посмотреть</div>
+                        </div>
+                        <div class="second-row">
+                            <div class="email">${portfolio.description}</div>
+                        </div>
+                    </div>
+                </#list>
+            </#if>
+            </div>
+        </div>
+    </div>
+</div>
+<footer style="position: relative;">
+    <div class="inside">
+        <div class="col-3">
+            <div class="title">Информация</div>
+            <ul>
+                <li>О нас</li>
+                <li>Наш блог</li>
+                <li>Карьера</li>
+                <li>Пользовательское соглашение</li>
+                <li>Контакты</li>
+            </ul>
+        </div>
+        <div class="col-3">
+            <div class="title">Дополнительные услуги</div>
+            <ul>
+                <li>Бизнес решения</li>
+                <li>Платформа</li>
+            </ul>
+        </div>
+        <div class="col-3">
+            <div class="title">Соц сети</div>
+            <ul>
+                <li>Facebook</li>
+                <li>Twitter</li>
+                <li>Google Plus</li>
+            </ul>
+        </div>
+    </div>
+</footer>
 </body>
+<script src="/resources/js/jquery-1.11.3.min.js"></script>
+<script src="/resources/js/javascript.js"></script>
 </html>

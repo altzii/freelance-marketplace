@@ -36,6 +36,7 @@ public class MessageController {
 
         modelMap.put("messages", messageService.findAllMessagesByUsers(currentUser, user));
         modelMap.put("to_id", user.getId());
+        modelMap.put("to_user", user);
         return "messages";
     }
 
