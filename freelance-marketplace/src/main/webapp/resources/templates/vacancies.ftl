@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<h1>Вакансии</h1>
+<h1>Вакансии, я - ${user.login}</h1>
 
 <@form.form commandName="add_vacancy_form" action="/consumer/vacancies/add" acceptCharset="UTF-8"  method="post">
 <div>
@@ -41,7 +41,6 @@
     </#list>
 </#if>
 </table>
-
 
 </body>
 </html>
