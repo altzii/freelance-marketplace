@@ -1,5 +1,6 @@
 package com.itis.freelance_marketplace.service;
 
+import com.itis.freelance_marketplace.entity.Role;
 import com.itis.freelance_marketplace.entity.User;
 
 import java.util.List;
@@ -21,5 +22,7 @@ public interface UserService {
     User findByLogin(String login);
 
     User findByEmail(String email);
+
+    List<User> findAllByRole(Role role);
 }
 

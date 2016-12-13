@@ -6,24 +6,22 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Вакансии</title>
+    <title>Заказчики</title>
 </head>
 
 <body>
-<h1>Вакансии</h1>
+<h1>Заказчики</h1>
 
-<table border="1">
-<#if vacancies??>
-    <#list vacancies as vacancy>
+<table>
+<#if customers??>
+    <#list customers as customer>
         <tr>
-            <td>${vacancy.id}</td>
-            <td>${vacancy.user.login}</td>
-            <td>${vacancy.title}</td>
-            <td>${vacancy.description}</td>
+            <td>${customer.login}</td>
+            <td>${customer.name}</td>
+            <td>${customer.email}</td>
+            <td>${customer.phone}</td>
         </tr>
     </#list>
 </#if>
 </table>
-
 </body>
-</html>

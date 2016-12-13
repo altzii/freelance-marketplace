@@ -1,5 +1,6 @@
 package com.itis.freelance_marketplace.service.impl;
 
+import com.itis.freelance_marketplace.entity.Role;
 import com.itis.freelance_marketplace.entity.User;
 import com.itis.freelance_marketplace.repository.UserRepository;
 import com.itis.freelance_marketplace.service.UserService;
@@ -56,5 +57,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public List<User> findAllByRole(Role role) {
+        return userRepository.findAllByRole(role);
     }
 }

@@ -39,16 +39,24 @@ public class VacancyController {
     @RequestMapping(value = "/vacancies", method = RequestMethod.GET)
     public String getVacancies(ModelMap modelMap){
         modelMap.put("vacancies", vacancyService.findAll());
-        modelMap.put("add_vacancy_form", new AddVacancyForm());
 
         return "vacancies";
     }
+
+    @RequestMapping(value = "/customer/vacancies/add", method = RequestMethod.GET)
+    public String getAddVacancy(ModelMap modelMap){
+        modelMap.put("vacancies", vacancyService.findAll());
+        modelMap.put("add_vacancy_form", new AddVacancyForm());
+
+        return "add_vacancy";
+    }
+
 
     @RequestMapping(value = "/consumer/vacancies/add", method = RequestMethod.POST)
     public String addVacancy(ModelMap modelMap, @ModelAttribute("add_vacancy_form") @Valid AddVacancyForm form, BindingResult result) {
         if (result.hasErrors()) {
             modelMap.put("vacancies", vacancyService.findAll());
-            return "vacancies";
+            return "add_vacancy";
         }
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

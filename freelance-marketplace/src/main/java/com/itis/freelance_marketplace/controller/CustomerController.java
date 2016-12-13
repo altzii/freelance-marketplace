@@ -10,22 +10,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * Created by alt on 12.12.16.
+ * Created by alt on 13.12.16.
  */
 @Controller
-public class DesignerController {
+public class CustomerController {
     @Autowired
     UserService userService;
 
     @Autowired
     RoleService roleService;
 
-    @RequestMapping(value = "/designers", method = RequestMethod.GET)
-    public String getDesigners(ModelMap modelMap){
-        Role role = roleService.findByName("ROLE_DESIGNER");
+    @RequestMapping(value = "/customers", method = RequestMethod.GET)
+    public String getConsumers(ModelMap modelMap){
+        Role role = roleService.findByName("ROLE_CUSTOMER");
 
-        modelMap.put("designers", userService.findAllByRole(role));
+        System.out.println();
 
-        return "designers";
+        modelMap.put("customers", userService.findAllByRole(role));
+
+        return "customers";
     }
 }
