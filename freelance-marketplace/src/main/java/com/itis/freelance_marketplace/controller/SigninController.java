@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class SigninController {
     @RequestMapping(value = "/signin", method = RequestMethod.GET)
-    public String signin(@RequestParam(value = "error", required = false) boolean error, ModelMap model) {
+    public String getSignin(@RequestParam(value = "error", required = false) boolean error, ModelMap model) {
         if (error) {
             model.addAttribute("error", true);
         }

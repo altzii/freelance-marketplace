@@ -38,8 +38,8 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public List<Message> findAllMessagesByUsers(User userFrom, User userTo) {
-        return messageRepository.findAllMessagesByUsers(userFrom, userTo);
+    public List<Message> findAllMessagesByUsersOrderByDate(User userFrom, User userTo) {
+        return messageRepository.findAllMessagesByUsersOrderByDate(userFrom, userTo);
     }
 
     @Override

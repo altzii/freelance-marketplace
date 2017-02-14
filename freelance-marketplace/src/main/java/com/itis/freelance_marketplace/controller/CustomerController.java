@@ -21,10 +21,8 @@ public class CustomerController {
     RoleService roleService;
 
     @RequestMapping(value = "/customers", method = RequestMethod.GET)
-    public String getConsumers(ModelMap modelMap){
+    public String getCustomers(ModelMap modelMap){
         Role role = roleService.findByName("ROLE_CUSTOMER");
-
-        System.out.println();
 
         modelMap.put("customers", userService.findAllByRole(role));
 

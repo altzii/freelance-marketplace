@@ -18,6 +18,6 @@ public interface MessageRepository extends JpaRepository<Message, Long> {
 
     @Query("select m from Message m where (m.fromUser = :fromUser and m.toUser = :toUser)" +
             " or (m.fromUser = :toUser and m.toUser = :fromUser) ORDER BY m.date")
-    List<Message> findAllMessagesByUsers(@Param("fromUser") User fromUser,  @Param("toUser") User toUser);
+    List<Message> findAllMessagesByUsersOrderByDate(@Param("fromUser") User fromUser,  @Param("toUser") User toUser);
 }
 

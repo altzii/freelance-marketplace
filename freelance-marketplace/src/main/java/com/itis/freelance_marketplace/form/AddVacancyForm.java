@@ -6,12 +6,12 @@ import org.hibernate.validator.constraints.NotEmpty;
  * Created by alt on 12.12.16.
  */
 public class AddVacancyForm {
-    @NotEmpty(message = "Поле не должно быть пустым")
+    @NotEmpty(message = "Заголовок вакансии не должно быть пустым")
     private String title;
 
     private String organization;
 
-    @NotEmpty(message = "Поле не должно быть пустым")
+    @NotEmpty(message = "Описание вакансии не должно быть пустым")
     private String description;
 
     public String getTitle() {

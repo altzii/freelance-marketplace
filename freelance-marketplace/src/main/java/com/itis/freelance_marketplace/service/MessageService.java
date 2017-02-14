@@ -15,7 +15,7 @@ public interface MessageService {
 
     List<Message> findAll();
 
-    List<Message> findAllMessagesByUsers(User userFrom, User userTo);
+    List<Message> findAllMessagesByUsersOrderByDate(User userFrom, User userTo);
 
     Message update(Message message);
 
