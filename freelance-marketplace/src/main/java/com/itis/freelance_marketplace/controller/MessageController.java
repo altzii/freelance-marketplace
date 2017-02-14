@@ -28,16 +28,23 @@ public class MessageController {
     UserService userService;
 
     @RequestMapping(value = "/conversation", method = RequestMethod.GET)
-    public String getConversation(ModelMap modelMap, @RequestParam(value = "id", required = true) long id ){
+    public String getConversation(ModelMap modelMap, @RequestParam(value = "id", required = true) long id) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String login = authentication.getName();
         User currentUser = userService.findByLogin(login);
         User user = userService.findById(id);
 
-        modelMap.put("messages", messageService.findAllMessagesByUsersOrderByDate(currentUser, user));
-        modelMap.put("to_id", user.getId());
-        modelMap.put("to_user", user);
-        return "messages";
+        if (currentUser == null) {
+            return "redirect:/error403";
+        } else if (user == null) {
+            return "redirect:/error404";
+        } else {
+            modelMap.put("messages", messageService.findAllMessagesByUsersOrderByDate(currentUser, user));
+            modelMap.put("to_id", user.getId());
+            modelMap.put("to_user", user);
+
+            return "messages";
+        }
     }
 
     @RequestMapping(value = "/send_message/{id:\\d+}", method = RequestMethod.POST)
@@ -47,14 +54,20 @@ public class MessageController {
         User fromUser = userService.findByLogin(login);
         User toUser = userService.findById(id);
 
-        Message message = new Message();
-        message.setText(text);
-        message.setDate(new Timestamp(System.currentTimeMillis()));
-        message.setFromUser(fromUser);
-        message.setToUser(toUser);
+        if (fromUser == null) {
+            return "redirect:/error403";
+        } else if (toUser == null) {
+            return "redirect:/error404";
+        } else {
+            Message message = new Message();
+            message.setText(text);
+            message.setDate(new Timestamp(System.currentTimeMillis()));
+            message.setFromUser(fromUser);
+            message.setToUser(toUser);
 
-        messageService.create(message);
+            messageService.create(message);
 
-        return "redirect:/conversation?id=" + id;
+            return "redirect:/conversation?id=" + id;
+        }
     }
 }
