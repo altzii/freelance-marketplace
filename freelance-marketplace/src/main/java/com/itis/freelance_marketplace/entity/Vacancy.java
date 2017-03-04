@@ -2,6 +2,7 @@ package com.itis.freelance_marketplace.entity;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.SortNatural;
 
 import javax.persistence.*;
 import java.util.List;
@@ -73,6 +74,8 @@ public class Vacancy {
     @OneToMany(cascade = CascadeType.MERGE)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name="vacancy_id")
+    @SortNatural
+    @OrderBy("date DESC")
     public List<VacancyComment> getVacancyComments() {
         return vacancyComments;
     }
