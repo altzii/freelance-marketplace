@@ -79,10 +79,10 @@
                 </#list>
             </#if>
             </div>
-            <form action="/send_message/${to_id}" id="message" method="post" accept-charset="UTF-8">
+            <@form.form action="/send_message/${to_id}" id="message" acceptCharset="UTF-8"  method="post">
                 <input name="text" type="text"  placeholder="Введите сообщение">
                 <div class="button" onclick="document.getElementById('message').submit();">Отправить</div>
-            </form>
+            </@form.form>form>
         </div>
     </div>
 

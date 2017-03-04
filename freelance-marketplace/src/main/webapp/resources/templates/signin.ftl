@@ -75,15 +75,14 @@
                 <#if error??>
                     <div class="error">Неправильный логин или пароль</div>
                 </#if>
-                    <form id="signin" action="j_spring_security_check" method="post">
+                    <@form.form id="signin" action="j_spring_security_check" method="post">
                         <div class="sub">Ваш логин</div>
                         <input <#if error??>class="wrong"</#if> id="login" name="j_username" type="text" placeholder="Логин" onclick="document.getElementById('login').className = ''"/>
                         <div class="sub">Ваш пароль</div>
                         <input <#if error??>class="wrong"</#if> id="password" name="j_password" type="password" placeholder="Пароль" onclick="document.getElementById('password').className = ''"/>
                         <input type="checkbox" style="display: none;" enabled="enabled" name="remember-me" />
-
                         <div class="button" onclick="document.getElementById('signin').submit();">Войти</div>
-                    </form>
+                    </@form.form>
                 </div>
             </div>
         </div>
