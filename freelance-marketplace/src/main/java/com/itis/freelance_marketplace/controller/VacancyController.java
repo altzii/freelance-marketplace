@@ -5,10 +5,12 @@ import com.itis.freelance_marketplace.entity.Vacancy;
 import com.itis.freelance_marketplace.entity.VacancyComment;
 import com.itis.freelance_marketplace.form.AddVacancyCommentForm;
 import com.itis.freelance_marketplace.form.AddVacancyForm;
+import com.itis.freelance_marketplace.security.CustomUserDetails;
 import com.itis.freelance_marketplace.service.UserService;
 import com.itis.freelance_marketplace.service.VacancyCommentService;
 import com.itis.freelance_marketplace.service.VacancyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -36,37 +38,52 @@ public class VacancyController {
     @Autowired
     VacancyCommentService vacancyCommentService;
 
-    @RequestMapping(value = "/vacancies", method = RequestMethod.GET)
-    public String getVacancies(ModelMap modelMap){
-        modelMap.put("vacancies", vacancyService.findAll());
+    Authentication authentication;
 
-        return "vacancies";
+    User currentUser;
+
+    @RequestMapping(value = "/vacancies", method = RequestMethod.GET)
+    public String getVacancies(ModelMap modelMap) {
+        authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+            return "redirect:/error403";
+        } else {
+            modelMap.put("vacancies", vacancyService.findAll());
+            return "vacancies";
+        }
     }
 
-    @RequestMapping(value = "/customer/vacancies/add", method = RequestMethod.GET)
-    public String getAddVacancy(ModelMap modelMap){
-        modelMap.put("vacancies", vacancyService.findAll());
-        modelMap.put("add_vacancy_form", new AddVacancyForm());
 
-        return "add_vacancy";
+    @RequestMapping(value = "/customer/vacancies/add", method = RequestMethod.GET)
+    public String getAddVacancy(ModelMap modelMap) {
+        authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+            return "redirect:/error403";
+        } else {
+            modelMap.put("vacancies", vacancyService.findAll());
+            modelMap.put("add_vacancy_form", new AddVacancyForm());
+
+            return "add_vacancy";
+        }
     }
 
 
     @RequestMapping(value = "/customer/vacancies/add", method = RequestMethod.POST)
-    public String addVacancy(ModelMap modelMap, @ModelAttribute("add_vacancy_form") @Valid AddVacancyForm form, BindingResult result) {
+    public String addVacancy(@ModelAttribute("add_vacancy_form") @Valid AddVacancyForm form, BindingResult result) {
         if (result.hasErrors()) {
             return "add_vacancy";
         }
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String login = authentication.getName();
-        User user = userService.findByLogin(login);
+        authentication = SecurityContextHolder.getContext().getAuthentication();
+        currentUser = ((CustomUserDetails) authentication.getPrincipal()).getUser();
 
         Vacancy vacancy = new Vacancy();
         vacancy.setTitle(form.getTitle());
         vacancy.setOrganization(form.getOrganization());
         vacancy.setDescription(form.getDescription());
-        vacancy.setUser(user);
+        vacancy.setUser(currentUser);
 
         vacancyService.create(vacancy);
 
@@ -77,7 +94,11 @@ public class VacancyController {
     public String getVacancy(ModelMap modelMap, @PathVariable Long id) {
         Vacancy vacancy = vacancyService.findById(id);
 
-        if (vacancy != null) {
+        authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+            return "redirect:/error403";
+        } else if (vacancy != null) {
             modelMap.put("vacancy", vacancy);
             modelMap.put("add_vacancy_comment_form", new AddVacancyCommentForm());
         } else {
@@ -89,6 +110,9 @@ public class VacancyController {
 
     @RequestMapping(value = "/vacancies/add_comment/{id:\\d+}", method = RequestMethod.POST)
     public String addVacancyComment(ModelMap modelMap, @PathVariable Long id, @ModelAttribute("add_vacancy_comment_form") @Valid AddVacancyCommentForm form, BindingResult result) {
+        authentication = SecurityContextHolder.getContext().getAuthentication();
+        currentUser = ((CustomUserDetails) authentication.getPrincipal()).getUser();
+
         Vacancy vacancy = vacancyService.findById(id);
 
         if (result.hasErrors()) {
@@ -96,12 +120,8 @@ public class VacancyController {
             return "vacancy";
         }
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String login = authentication.getName();
-        User user = userService.findByLogin(login);
-
         VacancyComment vacancyComment = new VacancyComment();
-        vacancyComment.setUser(user);
+        vacancyComment.setUser(currentUser);
         vacancyComment.setDate(new Timestamp(System.currentTimeMillis()));
         vacancyComment.setText(form.getText());
         vacancyComment.setVacancy(vacancy);
@@ -110,5 +130,4 @@ public class VacancyController {
 
         return "redirect:/vacancies/" + vacancy.getId();
     }
-
 }

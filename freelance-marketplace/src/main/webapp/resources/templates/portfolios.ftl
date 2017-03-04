@@ -62,7 +62,7 @@
 <div class="customers">
     <div class="top">
         <div class="inside">
-            <div class="title">Дизайнеры</div>
+            <div class="title">Портфолио</div>
         </div>
     </div>
     <div class="content">

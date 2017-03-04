@@ -2,9 +2,11 @@ package com.itis.freelance_marketplace.controller;
 
 import com.itis.freelance_marketplace.entity.Message;
 import com.itis.freelance_marketplace.entity.User;
+import com.itis.freelance_marketplace.security.CustomUserDetails;
 import com.itis.freelance_marketplace.service.MessageService;
 import com.itis.freelance_marketplace.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -27,18 +29,23 @@ public class MessageController {
     @Autowired
     UserService userService;
 
+    Authentication authentication;
+
+    User currentUser;
+
     @RequestMapping(value = "/conversation", method = RequestMethod.GET)
     public String getConversation(ModelMap modelMap, @RequestParam(value = "id", required = true) long id) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String login = authentication.getName();
-        User currentUser = userService.findByLogin(login);
+        authentication = SecurityContextHolder.getContext().getAuthentication();
+
         User user = userService.findById(id);
 
-        if (currentUser == null) {
+        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
             return "redirect:/error403";
         } else if (user == null) {
             return "redirect:/error404";
         } else {
+            currentUser = ((CustomUserDetails) authentication.getPrincipal()).getUser();
+
             modelMap.put("messages", messageService.findAllMessagesByUsersOrderByDate(currentUser, user));
             modelMap.put("to_id", user.getId());
             modelMap.put("to_user", user);
@@ -49,20 +56,19 @@ public class MessageController {
 
     @RequestMapping(value = "/send_message/{id:\\d+}", method = RequestMethod.POST)
     public String sendMessage(@PathVariable("id") long id, @RequestParam("text") String text) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String login = authentication.getName();
-        User fromUser = userService.findByLogin(login);
+        authentication = SecurityContextHolder.getContext().getAuthentication();
+
         User toUser = userService.findById(id);
 
-        if (fromUser == null) {
-            return "redirect:/error403";
-        } else if (toUser == null) {
+        if (toUser == null) {
             return "redirect:/error404";
         } else {
+            currentUser = ((CustomUserDetails) authentication.getPrincipal()).getUser();
+
             Message message = new Message();
             message.setText(text);
             message.setDate(new Timestamp(System.currentTimeMillis()));
-            message.setFromUser(fromUser);
+            message.setFromUser(currentUser);
             message.setToUser(toUser);
 
             messageService.create(message);
