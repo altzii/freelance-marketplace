@@ -5,6 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <meta charset="utf-8">
     <title>Freelance Marketplace</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic" rel="stylesheet">
@@ -101,8 +103,10 @@
                             <#list vacancy.vacancyComments as vacancyComment>
                                 <div class="comment">
                                     <div>
-                                        <div class="img"></div>
-                                        <div class="name">${vacancyComment.user.name}</div>
+                                        <#if (user == vacancyComment.user)>
+                                            <div class="img" style="cursor: pointer" id="deleteVacancyComment" onclick="deleteVacancyComment(${vacancyComment.id})"></div>
+                                        </#if>
+                                        <div class="name">${vacancyComment.user.name} ${(user == vacancyComment.user)?string('Автор', 'Не автор')}</div>
                                         <div class="date">${vacancyComment.date}</div>
                                     </div>
                                     <div class="text">${vacancyComment.text}</div>

@@ -16,10 +16,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.sql.Timestamp;
@@ -129,5 +126,18 @@ public class VacancyController {
         vacancyCommentService.create(vacancyComment);
 
         return "redirect:/vacancies/" + vacancy.getId();
+    }
+
+    @RequestMapping(value = "/vacancies/delete_comment/", method = RequestMethod.POST)
+    public String deleteVacancyComment(@RequestParam Long id) {
+        VacancyComment vacancyComment = vacancyCommentService.findById(id);
+
+        authentication = SecurityContextHolder.getContext().getAuthentication();
+        currentUser = ((CustomUserDetails) authentication.getPrincipal()).getUser();
+
+        if (vacancyComment.getUser().equals(currentUser)) {
+            vacancyCommentService.delete(id);
+        }
+        return "redirect:/error403";
     }
 }
